@@ -3,11 +3,11 @@ import PropTypes from 'prop-types';
 import styled from "styled-components";
 
 const FeedbackOptions  = ({ onGood, onNeutral, onBad}) => (
-        <BtnContainer>
+        <div>
         <BtnGood type="button" onClick = {onGood}>Good</BtnGood>
         <BtnNeutral type="button" onClick = {onNeutral}>Neutral</BtnNeutral>
         <BtnBad type="button" onClick = {onBad}>Bad</BtnBad>
-        </BtnContainer> 
+        </div> 
        
 )
 FeedbackOptions.propTypes = {
@@ -18,10 +18,7 @@ FeedbackOptions.propTypes = {
 }
 export default FeedbackOptions 
 
-const BtnContainer = styled.div`
-    width: 25%;
-    display: inline-block;
-`;
+
 
 const BtnGood = styled.button`
     width: 25%;
@@ -29,7 +26,7 @@ const BtnGood = styled.button`
     border-radius: 2px;
     border: none;
     text-align: center;
-    background-color: green;
+    background-color: #4fbc4f;
     cursor: pointer;
     font-size: 20px;
 `;
@@ -40,7 +37,7 @@ const BtnNeutral = styled.button`
     border-radius: 2px;
     border: none;
     text-align: center;
-    background-color: #d2cfcf;
+    background-color: whitesmoke;
     cursor: pointer;
     font-size: 20px;
 `;
@@ -51,7 +48,7 @@ const BtnBad = styled.button`
     border-radius: 2px;
     border: none;
     text-align: center;
-    background-color: red;
+    background-color: #fb5050;
     cursor: pointer;
     font-size: 20px;
 `;

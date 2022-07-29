@@ -25,9 +25,10 @@ export default Statistics
 
 const StatList = styled.ul`
     list-style: none;
+    padding-inline-start: 0px;
 `;
 
 const StatItem = styled.li`
     margin-bottom: 10px;
     font-size: 25px;
-`
+`;

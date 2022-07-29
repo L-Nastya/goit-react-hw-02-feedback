@@ -23,6 +23,7 @@ export default Section;
 
 const SectionContainer = styled.div`
     text-align: center;
+    
 `;
 
 const SectionTitle = styled.h2`

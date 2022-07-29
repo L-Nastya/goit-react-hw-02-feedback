@@ -1,8 +1,9 @@
-import React, { Component, Fragment } from "react";
+import React, { Component } from "react";
 import Section from "./Section/Section";
 import Statistics from "./Statistics/statistics";
 import FeedbackOptions from "./FeedbackOptions/FeedbackOptions";
 import Notification from "./Notification/Notification";
+import styled from "styled-components";
 
 class App extends Component {
   state = {
@@ -30,7 +31,7 @@ class App extends Component {
     const countTotalFeedback = good + neutral + bad;
     const countPositiveFeedbackPercentage = Math.ceil(good / countTotalFeedback * 100)
     return (
-      <Fragment>
+      <Container>
         <Section title="Please leave feedback 🙏">
           <FeedbackOptions
             onGood={this.clickGood}
@@ -39,19 +40,36 @@ class App extends Component {
           />
         </Section>
         <Section title="Statistics">
-          { countTotalFeedback === 0 ? (<Notification
-            message="There is no feedback 🤷‍♀️" /> ):( <Statistics
+          {countTotalFeedback === 0 ? (
+            <Notification
+              message="There is no feedback 🤷‍♀️"
+            />) :
+            (
+            <Statistics
             good={good}
             neutral={neutral}
             bad={bad}
             total={countTotalFeedback}
             positivePercentage={countPositiveFeedbackPercentage}
             visible={false}
-          />)}
+            />)}
         </Section>
-      </Fragment>
+      </Container>
     )
   }
 }
 
 export default App;
+
+const Container = styled.div`
+  border-radius: 2px;
+  box-sizing: border-box;
+  padding: 15px;
+  border: none;
+  margin: 50px auto;
+  width: 50%;
+  background-color: #edc1ed;
+  box-shadow:  0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+    border-radius: 5px;;
+`;
