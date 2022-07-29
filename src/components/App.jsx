@@ -51,7 +51,6 @@ class App extends Component {
             bad={bad}
             total={countTotalFeedback}
             positivePercentage={countPositiveFeedbackPercentage}
-            visible={false}
             />)}
         </Section>
       </Container>
