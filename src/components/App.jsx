@@ -11,22 +11,13 @@ class App extends Component {
     neutral: 0,
     bad: 0,
   }
-    clickGood = () => {
-    this.setState(prevState => ({
-      good: prevState.good + 1,
-    }));
-  };
-  clickNeutral = () => {
-    this.setState(prevState => ({
-      neutral: prevState.neutral + 1,
-    }));
-  };
-  clickBad = () => {
-    this.setState(prevState => ({
-      bad: prevState.bad + 1,
-    }));
-  };
+  clickBtn = event => {
+    const { id }= event.currentTarget;
+         this.setState({ [id]: this.state[id] + 1})
+    };
+
   render() {
+    const options = Object.keys(this.state)
     const { good, neutral, bad } = this.state
     const countTotalFeedback = good + neutral + bad;
     const countPositiveFeedbackPercentage = Math.ceil(good / countTotalFeedback * 100)
@@ -34,9 +25,8 @@ class App extends Component {
       <Container>
         <Section title="Please leave feedback 🙏">
           <FeedbackOptions
-            onGood={this.clickGood}
-            onNeutral={this.clickNeutral}
-            onBad={this.clickBad}
+            options={options}
+            onLeaveFeedback={this.clickBtn}
           />
         </Section>
         <Section title="Statistics">

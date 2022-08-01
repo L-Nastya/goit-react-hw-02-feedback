@@ -2,53 +2,52 @@ import React from "react";
 import PropTypes from 'prop-types';
 import styled from "styled-components";
 
-const FeedbackOptions  = ({ onGood, onNeutral, onBad}) => (
-        <div>
-        <BtnGood type="button" onClick = {onGood}>Good</BtnGood>
-        <BtnNeutral type="button" onClick = {onNeutral}>Neutral</BtnNeutral>
-        <BtnBad type="button" onClick = {onBad}>Bad</BtnBad>
-        </div> 
+const FeedbackOptions  = ({ options, onLeaveFeedback}) => (
+    <BtnList>
+        {
+            options.map(option => 
+                <li key={option}>
+              <Btn type="button" onClick = {onLeaveFeedback} id={option} >{option}</Btn> </li>
+            )
+        }
+        
+        </BtnList> 
        
 )
 FeedbackOptions.propTypes = {
-    onGood: PropTypes.func.isRequired,
-    onNeutral: PropTypes.func.isRequired,
-    onBad: PropTypes.func.isRequired,
+    onLeaveFeedback: PropTypes.func.isRequired,
+    options: PropTypes.array.isRequired,
 
 }
 export default FeedbackOptions 
 
-
-
-const BtnGood = styled.button`
-    width: 25%;
-    margin-right: 20px;
-    border-radius: 2px;
-    border: none;
-    text-align: center;
-    background-color: #4fbc4f;
-    cursor: pointer;
-    font-size: 20px;
+const BtnList = styled.ul`
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 `;
 
-const BtnNeutral = styled.button`
-    width: 25%;
-    margin-right: 20px;
-    border-radius: 2px;
-    border: none;
-    text-align: center;
-    background-color: whitesmoke;
-    cursor: pointer;
-    font-size: 20px;
-`;
+const backColor = option => {
+  switch (option) {
+    case 'good':
+      return '#4fbc4f';
+    case 'neutral':
+      return 'whitesmoke';
+    case 'bad':
+      return '#fb5050';
+    default:
+      return '#fff';
+  }
+};
 
-const BtnBad = styled.button`
-    width: 25%;
-    margin-right: 20px;
+const Btn = styled.button`
+    text-transform: capitalize;
+    margin-right: 30px;
     border-radius: 2px;
     border: none;
     text-align: center;
-    background-color: #fb5050;
     cursor: pointer;
     font-size: 20px;
+    background-color:  ${({ id }) => backColor(id)};;
 `;
